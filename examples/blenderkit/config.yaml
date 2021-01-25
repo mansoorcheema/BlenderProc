@@ -12,51 +12,44 @@
       "module": "main.Initializer",
       "config":{
         "global": {
-          "output_dir": "<args:1>"
+          "output_dir": "<args:0>"
         }
       }
     },
     {
       "module": "loader.BlendLoader",
       "config": {
-        "path": "<args:0>",
+        "path": "examples/blenderkit/material.blend",
+        "load_from": "Material",
+        "entities": "herringbone_parquet_oak_varnished",
+        "add_properties": {
+          "cp_prop": "val"
+        },
+      }
+    },
+    {
+      "module": "loader.BlendLoader",
+      "config": {
+        "path": "examples/blenderkit/table.blend",
         "load_from": "Object",
-        "entities": ".*.*"
+        "entities": ".*.*",
+        "cf_set_obj_material": "herringbone_parquet_oak_varnished",
       }
     },
     {
-      "module": "lighting.LightLoader",
+      "module": "loader.BlendLoader",
       "config": {
-        "lights": [
-          {
-            "type": "POINT",
-            "location": [5, -5, 5],
-            "energy": 1000
-          }
-        ]
+        "path": "examples/blenderkit/light.blend",
+        "load_from": "Object",
+        "entities": ".*light.*"
       }
     },
     {
-      "module": "camera.CameraSampler",
+      "module": "loader.BlendLoader",
       "config": {
-        "cam_poses": [
-        {
-          "number_of_samples": 5,
-          "location": {
-            "provider":"sampler.PartSphere",
-            "center": [0, 0, 0],
-            "radius": 2.5,
-            "part_sphere_vector": [1, 0, 0],
-            "mode": "SURFACE"
-          },
-          "rotation": {
-            "format": "look_at",
-            "value": {
-              "provider": "getter.POI"
-            }
-          }
-        }
-        ]
+        "path": "examples/blenderkit/camera.blend",
+        "load_from": "Object",
+        "entities": ".*Camera.*"
       }
     },
     {
